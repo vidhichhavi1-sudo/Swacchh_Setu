@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Waste | SwachhSetu</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* REPORT PAGE */
+
+        .report-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 25px 60px;
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .report-header {
+            margin-bottom: 30px;
+        }
+
+        .report-header .eyebrow {
+            color: #168c72;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+        }
+
+        .report-header h1 {
+            margin: 8px 0;
+            font-size: 34px;
+            color: #17231f;
+        }
+
+        .report-header h1 span {
+            color: #168c72;
+        }
+
+        .report-header p {
+            color: #68736f;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #26332e;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 15px;
+            border: 1px solid #d8e1dd;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            background: #fafcfb;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #168c72;
+            box-shadow: 0 0 0 3px rgba(22, 140, 114, 0.10);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .location-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .location-row input {
+            flex: 1;
+        }
+
+        .location-btn {
+            border: none;
+            background: #e7f4ef;
+            color: #168c72;
+            padding: 0 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .location-btn:hover {
+            background: #d8eee6;
+        }
+
+        .report-submit {
+            width: 100%;
+            border: none;
+            padding: 15px;
+            border-radius: 11px;
+            background: #168c72;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .report-submit:hover {
+            background: #11745e;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #e8f7ef;
+            color: #176b4c;
+            border: 1px solid #bfe6d2;
+            line-height: 1.5;
+        }
+
+        .report-note {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #78837f;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+
+            .report-card {
+                padding: 24px;
+            }
+
+            .report-header h1 {
+                font-size: 28px;
+            }
+
+            .location-row {
+                flex-direction: column;
+            }
+
+            .location-btn {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            <span>Swachh<span>Setu</span></span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tracking.html">Track</a>
+            <a href="report.html" class="active">Report</a>
+            <a href="analytics.html">Analytics</a>
+        </nav>
+
+        <button class="login-btn">Login</button>
+
+    </header>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <p class="eyebrow">CITIZEN REPORTING</p>
+
+            <h1>
+                Report a
+                <span>Waste Issue</span>
+            </h1>
+
+            <p>
+                Help improve waste collection by reporting overflowing
+                waste, missed collection or illegal dumping.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- REPORT FORM -->
+
+    <main class="report-container">
+
+        <div class="report-card">
+
+            <div class="report-header">
+
+                <p class="eyebrow">QUICK REPORT</p>
+
+                <h1>
+                    Tell us what's
+                    <span>happening</span>
+                </h1>
+
+                <p>
+                    Your report can help identify recurring waste problems
+                    and improve municipal collection planning.
+                </p>
+
+            </div>
+
+
+            <form id="wasteReportForm">
+
+                <!-- ISSUE TYPE -->
+
+               <!-- ISSUE TYPE -->
+
+<div class="form-group">
+
+    <label for="issueType">
+        What is the issue?
+    </label>
+
+    <select id="issueType" required>
+
+        <option value="">
+            Select an issue
+        </option>
+
+        <option value="Overflowing Waste">
+            🗑️ Overflowing Waste
+        </option>
+
+        <option value="Missed Collection">
+            🚛 Missed Collection
+        </option>
+
+        <option value="Illegal Dumping">
+            ⚠️ Illegal Dumping
+        </option>
+
+        <option value="Open Garbage Area">
+            🏚️ Open Garbage Area
+        </option>
+
+        <option value="Other">
+            Other
+        </option>
+
+    </select>
+
+</div>
+
+
+<!-- LOCATION -->
+
+<div class="form-group">
+
+    <label for="location">
+        Location
+    </label>
+
+    <div class="location-row">
+
+        <input
+            type="text"
+            id="location"
+            placeholder="Enter area / landmark"
+            required
+        >
+
+        <button
+            type="button"
+            class="location-btn"
+            onclick="getLocation()"
+        >
+            📍 Use Location
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- WARD -->
+
+<div class="form-group">
+
+    <label for="ward">
+        Ward Number
+    </label>
+
+    <input
+        type="text"
+        id="ward"
+        placeholder="Example: Ward 84"
+    >
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="form-group">
+
+    <label for="description">
+        Description
+    </label>
+
+    <textarea
+        id="description"
+        placeholder="Describe the waste issue..."
+        required
+    ></textarea>
+
+</div>
+
+
+<!-- PHOTO -->
+
+<div class="form-group">
+
+    <label for="photo">
+        Add Photo <span style="font-weight:400;">(optional)</span>
+    </label>
+
+    <input
+        type="file"
+        id="photo"
+        accept="image/*"
+    >
+
+</div>
+
+
+<!-- SUBMIT BUTTON -->
+
+<button
+    type="submit"
+    class="report-submit"
+>
+    Submit Waste Report 🚀
+</button>
+
+
+<p class="report-note">
+    Your report will be used by SwachhSetu for
+    waste-pattern and service analysis.
+</p>
+
+</form>
+
+
+<!-- SUCCESS MESSAGE -->
+
+<div
+    class="success-message"
+    id="successMessage"
+>
+    ✅ <strong>Report submitted successfully!</strong>
+    <br>
+    SwachhSetu has recorded this location and issue for
+    further analysis.
+</div>
+
+
+<!-- FUNCTIONAL DEMO SCRIPT -->
+
+<script>
+
+    const form = document.getElementById("wasteReportForm");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const report = {
+
+            issueType:
+                document.getElementById("issueType").value,
+
+            location:
+                document.getElementById("location").value,
+
+            ward:
+                document.getElementById("ward").value,
+
+            description:
+                document.getElementById("description").value,
+
+            date:
+                new Date().toISOString()
+
+        };
+
+
+        // Save report locally for demo
+
+        const existingReports =
+            JSON.parse(
+                localStorage.getItem("swachhsetuReports")
+            ) || [];
+
+        existingReports.push(report);
+
+        localStorage.setItem(
+            "swachhsetuReports",
+            JSON.stringify(existingReports)
+        );
+
+
+        // Show success message
+
+        document.getElementById(
+            "successMessage"
+        ).style.display = "block";
+
+        form.reset();
+
+    });
+
+
+    // GPS Location
+
+    function getLocation() {
+
+        if (!navigator.geolocation) {
+
+            alert(
+                "Location services are not supported by this browser."
+            );
+
+            return;
+        }
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                const latitude =
+                    position.coords.latitude;
+
+                const longitude =
+                    position.coords.longitude;
+
+                document.getElementById("location").value =
+                    `GPS: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+
+            },
+
+            function() {
+
+                alert(
+                    "Unable to access location. Please enter the location manually."
+                );
+
+            }
+
+        );
+
+    }
+
+</script>
+
+
+</main>
+
+</body>
+
+</html>

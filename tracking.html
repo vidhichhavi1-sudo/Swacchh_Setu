@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Live Tracking | SwachhSetu</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link
+    rel="stylesheet"
+    href="libs/leaflet.css"
+/>
+
+</head><body><!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <span>Swachh<span>Setu</span></span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tracking.html" class="active">Track</a>
+        <a href="report.html">Report</a>
+        <a href="analytics.html">Analytics</a>
+    </nav>
+
+    <button class="login-btn">Login</button>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+    <div>
+        <p class="eyebrow">REAL-TIME MONITORING</p>
+
+        <h1>
+            Waste Collection
+            <span>Tracking</span>
+        </h1>
+
+        <p>
+            Monitor collection vehicles, routes and service status
+            across the city.
+        </p>
+    </div>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        System Online
+    </div>
+
+</section>
+
+
+<!-- TRACKING DASHBOARD -->
+
+<main class="tracking-container">
+
+
+    <!-- LEFT: MAP -->
+
+    <section class="tracking-map">
+
+        <div class="tracking-map-header">
+
+            <div>
+                <small>LIVE CITY MAP</small>
+                <h2>Vehicle Network</h2>
+            </div>
+
+            <button class="map-control">
+                ⊙ Locate
+            </button>
+
+        </div>
+
+
+        <!-- MAP PLACEHOLDER -->
+
+        <div class="live-map" id="liveMap">
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT: TRUCK LIST -->
+
+    <section class="truck-panel">
+
+        <div class="panel-heading">
+
+            <div>
+                <small>ACTIVE VEHICLES</small>
+                <h2>Collection Fleet</h2>
+            </div>
+
+            <span class="vehicle-count">
+                3 Active
+            </span>
+
+        </div>
+
+
+        <!-- TRUCK 1 -->
+
+        <div class="truck-card selected">
+
+            <div class="truck-icon">
+                🚛
+            </div>
+
+            <div class="truck-info">
+
+                <h3>Truck #SW-21</h3>
+
+                <p>
+                    Ward 42 → Collection Zone B
+                </p>
+
+                <span class="truck-status active-status">
+                    ● Collecting
+                </span>
+
+            </div>
+
+            <div class="truck-speed">
+                <strong>28</strong>
+                <small>km/h</small>
+            </div>
+
+        </div>
+
+
+        <!-- TRUCK 2 -->
+
+        <div class="truck-card">
+
+            <div class="truck-icon">
+                🚛
+            </div>
+
+            <div class="truck-info">
+
+                <h3>Truck #SW-18</h3>
+
+                <p>
+                    Ward 17 → Collection Zone D
+                </p>
+
+                <span class="truck-status">
+                    ● On Route
+                </span>
+
+            </div>
+
+            <div class="truck-speed">
+                <strong>22</strong>
+                <small>km/h</small>
+            </div>
+
+        </div>
+
+
+        <!-- TRUCK 3 -->
+
+        <div class="truck-card">
+
+            <div class="truck-icon">
+                🚛
+            </div>
+
+            <div class="truck-info">
+
+                <h3>Truck #SW-09</h3>
+
+                <p>
+                    Ward 31 → Collection Zone A
+                </p>
+
+                <span class="truck-status">
+                    ● On Route
+                </span>
+
+            </div>
+
+            <div class="truck-speed">
+                <strong>19</strong>
+                <small>km/h</small>
+            </div>
+
+        </div>
+
+
+        <!-- ROUTE INFORMATION -->
+
+        <div class="route-info">
+
+            <h3>Selected Vehicle</h3>
+
+            <div class="route-row">
+                <span>📍 Current Location</span>
+                <strong>Ward 42</strong>
+            </div>
+
+            <div class="route-row">
+                <span>🎯 Next Stop</span>
+                <strong>Zone B</strong>
+            </div>
+
+            <div class="route-row">
+                <span>🛣️ Route Distance</span>
+                <strong>3.8 km</strong>
+            </div>
+
+            <div class="route-row">
+                <span>⏱️ Estimated Arrival</span>
+                <strong>12 min</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+<!-- =====================================================
+     SWACHH SETU — LIVE INTELLIGENCE / EVENT INJECTION
+===================================================== -->
+
+<section class="live-intelligence">
+
+    <div class="intelligence-header">
+
+        <div>
+            <span class="live-label">
+                ● LIVE MUNICIPAL INTELLIGENCE
+            </span>
+
+            <h2>Smart Response</h2>
+
+            <p>
+               Automatically adapts vehicle assignment and routes to changing city conditions.
+            </p>
+        </div>
+
+        <button class="event-inject-btn" onclick="injectSwachhEvent()">
+            ⚡ Simulate City Disruption
+        </button>
+
+    </div>
+
+
+    <!-- LIVE CONDITIONS -->
+
+    <div class="condition-grid">
+
+        <!-- TRAFFIC -->
+
+        <div class="condition-card">
+
+            <div class="condition-card-top">
+                <span class="condition-icon">🚦</span>
+
+                <span id="trafficBadge"
+                      class="condition-badge warning">
+                    MODERATE
+                </span>
+            </div>
+
+            <h3>Traffic Density</h3>
+
+            <p id="trafficLocation">
+                Tonk Road Corridor
+            </p>
+
+            <strong id="trafficValue">
+                64%
+            </strong>
+
+            <small>congestion index</small>
+
+        </div>
+
+
+        <!-- WATERLOGGING -->
+
+        <div class="condition-card">
+
+            <div class="condition-card-top">
+                <span class="condition-icon">🌊</span>
+
+                <span id="waterBadge"
+                      class="condition-badge safe">
+                    CLEAR
+                </span>
+            </div>
+
+            <h3>Waterlogging</h3>
+
+            <p id="waterLocation">
+                Mansarovar Zone
+            </p>
+
+            <strong id="waterValue">
+                LOW
+            </strong>
+
+            <small>risk level</small>
+
+        </div>
+
+
+        <!-- SENSOR -->
+
+        <div class="condition-card">
+
+            <div class="condition-card-top">
+                <span class="condition-icon">📡</span>
+
+                <span id="sensorBadge"
+                      class="condition-badge warning">
+                    MONITORING
+                </span>
+            </div>
+
+            <h3>Waste Sensor</h3>
+
+            <p id="sensorLocation">
+                Collection Point CP-27
+            </p>
+
+            <strong id="sensorValue">
+                78%
+            </strong>
+
+            <small>fill level</small>
+
+        </div>
+
+
+        <!-- ROAD -->
+
+        <div class="condition-card">
+
+            <div class="condition-card-top">
+                <span class="condition-icon">🚧</span>
+
+                <span id="roadBadge"
+                      class="condition-badge safe">
+                    OPEN
+                </span>
+            </div>
+
+            <h3>Road Network</h3>
+
+            <p id="roadLocation">
+                R-14 Connector
+            </p>
+
+            <strong id="roadValue">
+                NORMAL
+            </strong>
+
+            <small>accessibility</small>
+
+        </div>
+
+    </div>
+
+
+    <!-- DECISION PANEL -->
+
+    <div class="dispatch-intelligence">
+
+        <div class="dispatch-title">
+
+            <div>
+                <span>SWACHH SETU RESPONSE..</span>
+
+                <h3>
+                    what the system recommends right now..
+                </h3>
+            </div>
+
+            <strong id="dispatchStatus">
+                ● OPTIMAL
+            </strong>
+
+        </div>
+
+
+        <div class="dispatch-grid">
+
+
+            <!-- SITUATION -->
+
+            <div class="dispatch-box">
+
+                <span class="box-label">
+                    COLLECTION PRIORITY
+                </span>
+
+                <div class="priority-number"
+                     id="priorityValue">
+                    HIGH
+                </div>
+
+                <p id="priorityReason">
+                    Collection point approaching
+                    operational threshold.
+                </p>
+
+            </div>
+
+
+            <!-- VEHICLE -->
+
+            <div class="dispatch-box">
+
+                <span class="box-label">
+                    RECOMMENDED VEHICLE
+                </span>
+
+                <div class="recommended-vehicle">
+
+                    <span id="recommendedIcon">
+                        🚛
+                    </span>
+
+                    <div>
+                        <strong id="recommendedVehicle">
+                            Compactor C-12
+                        </strong>
+
+                        <p id="vehicleReason">
+                            Suitable capacity and nearby
+                            location.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="vehicle-tags">
+
+                    <span id="vehicleCapacity">
+                        8 TON
+                    </span>
+
+                    <span id="vehicleAccess">
+                        MEDIUM ACCESS
+                    </span>
+
+                    <span id="vehicleDistance">
+                        2.4 KM
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROUTE -->
+
+            <div class="dispatch-box">
+
+                <span class="box-label">
+                    OPTIMIZED ROUTE
+                </span>
+
+                <div class="route-chain">
+
+                    <div>
+                        <span>COLLECTION</span>
+                        <strong>CP-27</strong>
+                    </div>
+
+                    <b>→</b>
+
+                    <div>
+                        <span>TRANSFER</span>
+                        <strong id="transferRoute">
+                            Jaipur Transfer Station
+                        </strong>
+                    </div>
+
+                    <b>→</b>
+
+                    <div>
+                        <span>PROCESSING</span>
+                        <strong>Processing Facility</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMPACT -->
+
+        <div class="dispatch-impact">
+
+            <div>
+                <span>ROUTE</span>
+                <strong id="routeDistance">
+                    4.8 km
+                </strong>
+            </div>
+
+            <div>
+                <span>ETA</span>
+                <strong id="routeETA">
+                    11 min
+                </strong>
+            </div>
+
+            <div>
+                <span>FUEL EFFICIENCY</span>
+                <strong id="fuelSaving">
+                    18%
+                </strong>
+            </div>
+
+            <div>
+                <span>SYSTEM ACTION</span>
+                <strong id="systemAction">
+                    ROUTE OPTIMIZED
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="libs/leaflet.js"></script>
+<script src="js/script.js"></script>
+
+</body></html>

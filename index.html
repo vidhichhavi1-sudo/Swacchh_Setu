@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SwachhSetu | Smarter Cities, Cleaner Tomorrow</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head><body><!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <span>Swachh<span>Setu</span></span>
+    </div>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="tracking.html">Track</a>
+        <a href="report.html">Report</a>
+        <a href="analytics.html">Analytics</a>
+    </nav>
+
+    <button class="login-btn" onclick="login()">Login</button>
+
+</header>
+
+
+<!-- HERO SECTION -->
+<main class="hero">
+
+    <div class="hero-content">
+
+        <p class="eyebrow">SMART CIVIC TECHNOLOGY</p>
+
+        <h1>
+            Smarter Cities.<br>
+            <span>Cleaner Tomorrow.</span>
+        </h1>
+
+        <p class="hero-text">
+            SwachhSetu connects citizens, waste collection vehicles
+            and municipal operations through one intelligent platform.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="tracking.html" class="primary-btn">
+                🚛 Track Collection
+            </a>
+
+            <a href="report.html" class="secondary-btn">
+                📍 Report Waste
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO VISUAL -->
+    <div class="hero-visual">
+
+        <div class="map-card">
+
+            <div class="map-header">
+                <div>
+                    <small>LIVE CITY OVERVIEW</small>
+                    <h3>Waste Collection Network</h3>
+                </div>
+
+                <span class="live-status">
+                    ● LIVE
+                </span>
+            </div>
+
+            <div class="map-area">
+
+                <div class="route route-one"></div>
+                <div class="route route-two"></div>
+
+                <div class="location location-one">📍</div>
+                <div class="location location-two">📍</div>
+
+                <div class="truck">🚛</div>
+
+                <div class="map-label label-one">
+                    Collection Point
+                </div>
+
+                <div class="map-label label-two">
+                    Truck #SW-21
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- FEATURES -->
+<section class="features">
+
+    <div class="feature-card">
+        <div class="feature-icon">🚛</div>
+        <h3>Live Tracking</h3>
+        <p>
+            Monitor waste collection vehicles and their routes.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Smart Reporting</h3>
+        <p>
+            Citizens can report overflowing or missed collection points.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🗑️</div>
+        <h3>Smart Bin Insights</h3>
+        <p>
+            Identify locations that may require additional waste bins.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>City Analytics</h3>
+        <p>
+            Turn collection data into actionable municipal insights.
+        </p>
+    </div>
+
+</section>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/script.js"></script>
+<script>
+    function login() {
+        window.location.href="tracking.html"
+    }
+</script>
+
+</body>
+</html>
